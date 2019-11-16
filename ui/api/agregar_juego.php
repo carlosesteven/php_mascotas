@@ -1,5 +1,5 @@
 <?php
-    require_once "vendor/autoload.php";
+    require_once "../../vendor/autoload.php";
 
     $respuesta = array();
 
@@ -22,7 +22,7 @@
         $insertOneResult = $collection->insertOne([
             'juego_id' => ( count( $collection->find()->toArray() ) + 1 ),
             'juego_materiales' => $_POST["juego_materiales"],
-            'juego_foto' => $file_name,
+            'juego_foto' => $nombre_temporal,
         ]);
 
         if(move_uploaded_file($file_path, "planos/" . $nombre_temporal ))

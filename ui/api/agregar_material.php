@@ -1,5 +1,5 @@
 <?php
-    require_once "vendor/autoload.php";
+    require_once "../../vendor/autoload.php";
 
     $respuesta = array();
 
@@ -23,6 +23,9 @@
             $insertOneResult = $collection->insertOne([
                 'material_id' => ( count( $collection->find()->toArray() ) + 1 ),
                 'material_nombre' => $_POST["material_nombre"],
+                'material_dim_alto' => $_POST["material_dim_alto"],
+                'material_dim_ancho' => $_POST["material_dim_alto"],
+                'material_tipo' => $_POST["material_dim_alto"],
             ]);
 
             $respuesta["estado"] = "ok";
@@ -36,6 +39,7 @@
     }else{
         $respuesta["estado"] = "error";
         $respuesta["detalles"] = "Faltan Parametros en la peticion.";
+        $respuesta["peticion"] = $_POST;
     }
 
     header('Content-Type: application/json; charset=utf-8');
