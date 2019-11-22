@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Registrar Pripietario</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- sweetalert JS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <form method="post" onsubmit="enviarDatos(event)" autocomplete="off">
+            <div class="text-center">
+                <h3>
+                    Registrar Pripietario
+                </h3>
+            </div>
+            <div class="mt-3">
+                <input 
+                    type="number"
+                    class="form-control"
+                    name="propietario_id" 
+                    id="propietario_id" 
+                    placeholder="Numero Identificación"
+                    required
+                    />
+            </div>
+            <div class="mt-3">
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="propietario_nombre" 
+                    id="propietario_nombre" 
+                    placeholder="Nombre de la mascota"
+                    required
+                    />
+            </div>
+            <div class="mt-3">
+                <input 
+                    type="number"
+                    class="form-control"
+                    name="propietario_telefono" 
+                    id="propietario_telefono" 
+                    placeholder="Numero Telefonico"
+                    required
+                    />
+            </div>
+            <div class="mt-3">
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="propietario_direccion" 
+                    id="propietario_direccion" 
+                    placeholder="Dirección"
+                    required
+                    />
+            </div>            
+            <div class="text-center" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-info">Registrar Propietario</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function enviarDatos( evt )
+        {
+            evt.preventDefault();
+
+            var url = 'api/agregar_propietario.php';            
+
+            var data = new FormData();
+            data.append( "prop_id", document.getElementById("propietario_id").value );
+            data.append( "prop_nombre", document.getElementById("propietario_nombre").value );
+            data.append( "prop_telefono", document.getElementById("propietario_telefono").value );
+            data.append( "prop_direccion", document.getElementById("propietario_direccion").value );
+
+            fetch(url, {
+                method: 'post',
+                body: data, 
+                
+            }).then(res => res.json() )
+            .catch(error => console.error('Error:', error))
+            .then(response => {               
+                if( response.estado === "ok" )
+                {
+                    swal("", response.detalles, "success");
+                }else{
+                    swal("", response.detalles, "error");
+                }                
+            });
+            
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

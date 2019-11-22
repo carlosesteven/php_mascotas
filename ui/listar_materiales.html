@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Lista Materiales</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <!-- Bootstrap CSS -->
@@ -12,50 +12,8 @@
 <body>
     
     <div class="container">
-        <form method="post">
-            <div class="text-center">
-                <h3>
-                    Listar Material
-                </h3>
-            </div>
-            <div style="margin-top: 20px;">
-            <input 
-                class="form-control"
-                name="material_nombre" 
-                id="material_nombre" 
-                placeholder="Nombre del material"
-                value="test"
-                required
-                />
-            </div>
-            <div style="margin-top: 20px;">
-                <button type="submit" onclick="enviarDatos(event)" class="btn btn-info">Crear</button>
-            </div>
-        </form>
+        
     </div>
-
-    <script>
-        function enviarDatos( evt )
-        {
-            evt.preventDefault();
-
-            var url = 'api/agregar_material.php';            
-
-            var data = new FormData();
-            data.append( "material_nombre", document.getElementById("material_nombre").value );
-
-            fetch(url, {
-                method: 'post',
-                body: data, 
-                
-            }).then(res => res.json() )
-            .catch(error => console.error('Error:', error))
-            .then(response => {
-                alert( response.detalles );
-            });
-            
-        }
-    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

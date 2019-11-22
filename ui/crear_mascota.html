@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Registrar Mascota</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- sweetalert JS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <form method="post" onsubmit="enviarDatos(event)" autocomplete="off">
+            <div class="text-center">
+                <h3>
+                    Registrar Mascota
+                </h3>
+            </div>
+            <div class="mt-3">
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="animal_nombre" 
+                    id="animal_nombre" 
+                    placeholder="Nombre de la mascota"
+                    required
+                    />
+            </div>
+            <div class="mt-3">
+                <input 
+                    type="date"
+                    class="form-control"
+                    name="animal_fecha" 
+                    id="animal_fecha" 
+                    placeholder="Fecha Nacimiento"
+                    required
+                    />
+            </div>
+            <div class="mt-3">
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="animal_raza" 
+                    id="animal_raza" 
+                    placeholder="Raza de animal"
+                    required
+                    />
+            </div>            
+            <div class="text-center" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-info">Registrar Mascota</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function enviarDatos( evt )
+        {
+            evt.preventDefault();
+
+            var url = 'api/agregar_mascota.php';            
+
+            var data = new FormData();
+            data.append( "animal_nombre", document.getElementById("animal_nombre").value );
+            data.append( "animal_fecha", document.getElementById("animal_fecha").value );
+            data.append( "animal_raza", document.getElementById("animal_raza").value );
+
+            fetch(url, {
+                method: 'post',
+                body: data, 
+                
+            }).then(res => res.json() )
+            .catch(error => console.error('Error:', error))
+            .then(response => {               
+                if( response.estado === "ok" )
+                {
+                    swal("", response.detalles, "success");
+                }else{
+                    swal("", response.detalles, "error");
+                }                
+            });
+            
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,10 +1,10 @@
 <?php
-    require_once "vendor/autoload.php";
+    require_once "../../vendor/autoload.php";
 
     $respuesta = array();
 
     if( $_POST 
-        && $_POST["animal_id"]
+        //&& $_POST["animal_id"]
         && $_POST["animal_nombre"]
         && $_POST["animal_fecha"]
         && $_POST["animal_raza"]
@@ -17,14 +17,14 @@
 
         $cursor = $collection->findOne( 
             [
-                'animal_id' => $_POST["animal_id"]
+                'animal_nombre' => $_POST["animal_nombre"]
             ] 
         );
 
         if( $cursor === null )
         {
             $insertOneResult = $collection->insertOne([
-                'animal_id' => $_POST["animal_id"],
+                'animal_id' => ( count( $collection->find()->toArray() ) + 1 ),
                 'animal_nombre' => $_POST["animal_nombre"],
                 'animal_fecha' => $_POST["animal_fecha"],
                 'animal_raza' => $_POST["animal_raza"]
@@ -35,7 +35,7 @@
         
         }else{
             $respuesta["estado"] = "error";
-            $respuesta["detalles"] = "Ya se encuentra registrado la mascota";
+            $respuesta["detalles"] = "Ya se encuentra registrado una mascota con el nombre: ".$_POST["animal_nombre"];
         }
 
     }else{

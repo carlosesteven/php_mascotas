@@ -4,43 +4,46 @@
     $respuesta = array();
 
     if( $_POST 
-        && $_POST["prop_id"]
-        && $_POST["prop_nombre"]
-        && $_POST["prop_telefono"]
-        && $_POST["prop_direccion"]
+        && $_POST["material"]
     )
     {
 
         $cliente = new MongoDB\Client("mongodb+srv://csc:8426803156229492@cluster0-5fixw.gcp.mongodb.net/test?retryWrites=true&w=majority");
 
-        $collection = $cliente->mascotas->propietarios;
+        $collection = $cliente->mascotas->materiales;
 
         $cursor = $collection->findOne( 
             [
-                'prop_id' => $_POST["prop_id"]
+                'material' => $_POST["material"]
             ] 
         );
 
         if( $cursor === null )
         {
             $insertOneResult = $collection->insertOne([
-                'prop_id' => $_POST["prop_id"],
-                'prop_nombre' => $_POST["prop_nombre"],
-                'prop_telefono' => $_POST["prop_telefono"],
-                'prop_direccion' => $_POST["prop_direccion"]
+                'id' => ( count( $collection->find()->toArray() ) + 1 ),
+                'material' => $_POST["material"],
+                'humedad_res' => $_POST["humedad_res"],
+                'tipo_madera' => $_POST["tipo_madera"],
+                'tipo_densidad' => $_POST["tipo_densidad"],
+                'alto' => $_POST["alto"],
+                'ancho' => $_POST["ancho"],
+                'profundidad' => $_POST["profundidad"],
+                'color' => $_POST["color"],
             ]);
 
             $respuesta["estado"] = "ok";
-            $respuesta["detalles"] = "Se registro el propietario correctamente.";
+            $respuesta["detalles"] = "Se registro el material correctamente.";
         
         }else{
             $respuesta["estado"] = "error";
-            $respuesta["detalles"] = "Ya se encuentra registrado el propietario.";
+            $respuesta["detalles"] = "Ya se encuentra registrado el material.";            
         }
 
     }else{
         $respuesta["estado"] = "error";
         $respuesta["detalles"] = "Faltan Parametros en la peticion.";
+        $respuesta["peticion"] = $_POST;
     }
 
     header('Content-Type: application/json; charset=utf-8');
