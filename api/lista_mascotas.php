@@ -35,8 +35,9 @@
                 $icono = "paw";
             break;
         }
-        echo '
+        echo '            
             <div class="col-sm-4 mt-2">
+            <a href="ver_mascota.php?animal_nombre='.$value["animal_nombre"].'">
                 <div class="card">                    
                     <div class="card-body">
                         <div class="text-center">
@@ -62,6 +63,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </a></div>
+            
             ';
     }
