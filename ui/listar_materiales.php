@@ -41,7 +41,7 @@
     <script>
         function crearMaterialMenu()
         {
-            swal("A wild Pikachu appeared! What do you want to do?", {
+            swal("¿ Qué tipo de materia desea crear ?", {
             buttons: {
                 metal: {
                     text: "Metal",
