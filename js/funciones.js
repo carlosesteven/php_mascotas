@@ -41,6 +41,12 @@
             data.append( "ancho", document.getElementById("ancho").value );
             data.append( "profundidad", document.getElementById("profundidad").value );
             data.append( "nombre_juego", document.getElementById("nombre_juego").value );
+
+            document.getElementById("alto").value = "";
+            document.getElementById("ancho").value = "";
+            document.getElementById("profundidad").value = "";
+            document.getElementById("nombre_juego").value = "";
+
             var inputElements = document.getElementsByClassName('materiales');
             for(var i=0; inputElements[i]; ++i){
                 if(inputElements[i].checked){
@@ -78,6 +84,11 @@
             data.append( "animal_raza", document.getElementById("animal_raza").value );
             data.append( "animal_tipo", document.getElementById("animal_tipo").value );
 
+            document.getElementById("animal_nombre").value = "";
+            document.getElementById("animal_fecha").value = "";
+            document.getElementById("animal_raza").value = "";
+            document.getElementById("animal_tipo").value = "";
+
             fetch(url, {
                 method: 'post',
                 body: data, 
@@ -106,6 +117,11 @@
             data.append( "prop_nombre", document.getElementById("propietario_nombre").value );
             data.append( "prop_telefono", document.getElementById("propietario_telefono").value );
             data.append( "prop_direccion", document.getElementById("propietario_direccion").value );
+
+            document.getElementById("propietario_id").value = "";
+            document.getElementById("propietario_nombre").value = "";
+            document.getElementById("propietario_telefono").value = "";
+            document.getElementById("propietario_direccion").value = "";
 
             fetch(url, {
                 method: 'post',
@@ -139,6 +155,15 @@
             data.append( "ancho", document.getElementById("ancho").value );
             data.append( "profundidad", document.getElementById("profundidad").value );
             data.append( "color", document.getElementById("color").value );
+
+            document.getElementById("material").value = "";
+            document.getElementById("humedad_res").value = "";
+            document.getElementById("tipo_madera").value = "";
+            document.getElementById("tipo_densidad").value = "";
+            document.getElementById("alto").value = "";
+            document.getElementById("ancho").value = "";
+            document.getElementById("profundidad").value = "";
+            document.getElementById("color").value = "";
 
             fetch(url, {
                 method: 'post',
@@ -174,6 +199,16 @@
             data.append( "conductividad", document.getElementById("conductividad").value );
             data.append( "color", document.getElementById("color").value );
 
+            document.getElementById("material").value = "";
+            document.getElementById("toxico").value = "";
+            document.getElementById("magnetico").value = "";
+            document.getElementById("corrosivo").value = "";
+            document.getElementById("alto").value = "";
+            document.getElementById("ancho").value = "";
+            document.getElementById("profundidad").value = "";
+            document.getElementById("conductividad").value = "";
+            document.getElementById("color").value = "";
+
             fetch(url, {
                 method: 'post',
                 body: data, 
@@ -207,6 +242,16 @@
             data.append( "ancho", document.getElementById("ancho").value );
             data.append( "profundidad", document.getElementById("profundidad").value );
             data.append( "color", document.getElementById("color").value );
+
+            document.getElementById("material").value = "";
+            document.getElementById("tipo_tela").value = "";
+            document.getElementById("absorbente").value = "";
+            document.getElementById("comodo").value = "";
+            document.getElementById("tipo_lavado").value = "";
+            document.getElementById("alto").value = "";
+            document.getElementById("ancho").value = "";
+            document.getElementById("profundidad").value = "";
+            document.getElementById("color").value = "";
 
             fetch(url, {
                 method: 'post',
