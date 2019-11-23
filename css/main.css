@@ -1,0 +1,10 @@
+body{
+    padding: 20px;
+}
+.card-img-top{
+    height: 200px;
+}
+#opc{
+    width: 300px;
+    font-weight: bold;
+}

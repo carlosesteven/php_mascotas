@@ -3,16 +3,36 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Lista Materiales</title>
+    <title>Lista Mascotas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6ae8224d69.js" crossorigin="anonymous"></script>
 </head>
 <body>
     
-    <div class="container">
-        
+    <div class="container mt-1">
+        <div class="text-center">
+            <h2>
+                <b>
+                    Lista Mascotas
+                </b>
+            </h2>
+        </div>
+        <div class="text-right">
+            <a 
+                class="btn btn-success"
+                href="crear_mascota.html"
+            >
+                Nueva Mascota
+            </a>
+        </div>
+        <div class="row text-center mt-3">
+            <?php
+                require_once("../api/lista_mascotas.php")
+            ?>                    
+        </div>
     </div>
 
     <!-- Optional JavaScript -->

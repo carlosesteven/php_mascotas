@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Registrar Tela</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- sweetalert JS -->
@@ -14,7 +14,7 @@
 <body>
     
     <div class="container">
-        <form method="post" onsubmit="enviarDatos(event)" autocomplete="off">
+        <form method="post" onsubmit="registrarTela(event)" autocomplete="off">
             <div class="text-center">
                 <h3>
                     Registrar Tela
@@ -120,41 +120,7 @@
         </form>
     </div>
 
-    <script>
-        function enviarDatos( evt )
-        {
-            evt.preventDefault();
-
-            var url = 'api/agregar_material_tela.php';            
-
-            var data = new FormData();
-            data.append( "material", document.getElementById("material").value );
-            data.append( "tipo_tela", document.getElementById("tipo_tela").value );
-            data.append( "absorbente", document.getElementById("absorbente").value );
-            data.append( "comodo", document.getElementById("comodo").value );
-            data.append( "tipo_lavado", document.getElementById("tipo_lavado").value );
-            data.append( "alto", document.getElementById("alto").value );
-            data.append( "ancho", document.getElementById("ancho").value );
-            data.append( "profundidad", document.getElementById("profundidad").value );
-            data.append( "color", document.getElementById("color").value );
-
-            fetch(url, {
-                method: 'post',
-                body: data, 
-                
-            }).then(res => res.json() )
-            .catch(error => console.error('Error:', error))
-            .then(response => {               
-                if( response.estado === "ok" )
-                {
-                    swal("", response.detalles, "success");
-                }else{
-                    swal("", response.detalles, "error");
-                }                
-            });
-            
-        }
-    </script>
+    <script src="../js/funciones.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

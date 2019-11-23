@@ -1,5 +1,5 @@
 <?php
-    require_once "../../vendor/autoload.php";
+    require_once "../vendor/autoload.php";
 
     $respuesta = array();
 
@@ -23,13 +23,13 @@
             $insertOneResult = $collection->insertOne([
                 'id' => ( count( $collection->find()->toArray() ) + 1 ),
                 'material' => $_POST["material"],
-                'tipo_tela' => $_POST["tipo_tela"],
-                'absorbente' => $_POST["absorbente"],
-                'comodo' => $_POST["comodo"],
-                'tipo_lavado' => $_POST["tipo_lavado"],
+                'toxico' => $_POST["toxico"],
+                'magnetico' => $_POST["magnetico"],
+                'corrosivo' => $_POST["corrosivo"],
                 'alto' => $_POST["alto"],
                 'ancho' => $_POST["ancho"],
                 'profundidad' => $_POST["profundidad"],
+                'conductividad' => $_POST["conductividad"],
                 'color' => $_POST["color"],
             ]);
 

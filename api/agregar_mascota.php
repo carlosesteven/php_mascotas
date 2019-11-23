@@ -1,5 +1,5 @@
 <?php
-    require_once "../../vendor/autoload.php";
+    require_once "../vendor/autoload.php";
 
     $respuesta = array();
 
@@ -27,7 +27,8 @@
                 'animal_id' => ( count( $collection->find()->toArray() ) + 1 ),
                 'animal_nombre' => $_POST["animal_nombre"],
                 'animal_fecha' => $_POST["animal_fecha"],
-                'animal_raza' => $_POST["animal_raza"]
+                'animal_raza' => $_POST["animal_raza"],
+                'animal_tipo' => $_POST["animal_tipo"]
             ]);
 
             $respuesta["estado"] = "ok";
