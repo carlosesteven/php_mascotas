@@ -23,6 +23,9 @@
             </h2>            
         </div>
         <div class="mt-4">
+                <i class="fas fa-7x fa-paw"></i>
+        </div>
+        <div class="mt-4">
             <a                 
                 class="btn btn-info"
                 id="opc"
