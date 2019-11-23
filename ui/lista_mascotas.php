@@ -60,7 +60,7 @@
         <div class="text-right">
             <a 
                 class="btn btn-success"
-                href="crear_juego.html"
+                href="crear_mascota.html"
                 >
                     Nuevo Mascota
             </a>
